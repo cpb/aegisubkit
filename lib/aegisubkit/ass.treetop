@@ -1,0 +1,67 @@
+grammar ASS
+  rule subtitle
+    info?
+    audio_metadata?
+    styles?
+    event_section
+    end_of_data
+
+    <Aegisubkit::ASS::Subtitle>
+  end
+
+  rule info
+    '[Script Info]' end_of_line lines* end_of_section <Aegisubkit::ASS::ScriptInfo>
+  end
+
+  rule audio_metadata
+    '[Aegisub Project Garbage]' end_of_line lines* end_of_section <Aegisubkit::ASS::AudioMetaData>
+  end
+
+  rule styles
+    '[V4+ Styles]' end_of_line lines* end_of_section <Aegisubkit::ASS::V4PStyles>
+  end
+
+  rule event_section
+    '[Events]' end_of_line line events end_of_section
+  end
+
+  rule events
+    line* <Aegisubkit::ASS::Events>
+  end
+
+  rule event
+    'Dialogue'
+  end
+
+  rule lines
+    line+
+  end
+
+  rule line
+    string (end_of_line / end_of_file)
+  end
+
+  rule end_of_section
+    end_of_line+ / end_of_file
+  end
+
+  rule end_of_line
+    "\r\n" / "\n" / "\r"
+  end
+
+  rule end_of_data
+    end_of_line+ / end_of_file
+  end
+
+  rule end_of_file
+    !.
+  end
+
+  rule number
+    [0-9]+
+  end
+
+  rule string
+    (!end_of_line .)+
+  end
+end
