@@ -45,16 +45,13 @@ module Aegisubkit
     class Events < Treetop::Runtime::SyntaxNode
       def build
         elements.map do |line|
-          events = {}
-
+          event = {}
           fields = line.text_value.split(',')
-
-          events[:id] = elements.index(line) + 1
-          # subtitle[:start] = SSA.parse_timecode(fields[1])
-          # subtitle[:end] = SSA.parse_timecode(fields[2])
-          events[:lines] = fields[9..-1].join.sub!(/\N|\n/, '')
-
-          events
+          event[:id] = elements.index(line) + 1
+          event[:start] = fields[1]
+          event[:end] = fields[2]
+          event[:caption] = fields[9..-1].join.sub!(/\N|\n/, '')
+          event
         end
       end
     end
@@ -71,7 +68,7 @@ module Aegisubkit
         failure += "failure_line #{parser.failure_line}\n"
         failure += "failure_column #{parser.failure_column}\n"
         failure += "failure_reason #{parser.failure_reason}\n"
-
+        Aegisubkit.logger.error failure
         fail failure
       end
     end
