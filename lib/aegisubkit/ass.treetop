@@ -1,8 +1,8 @@
 grammar ASS
   rule subtitle
-    info?
-    audio_metadata?
-    styles?
+    info
+    audio_metadata
+    styles
     event_section
     end_of_data
 
