@@ -1,5 +1,6 @@
 grammar ASS
   rule subtitle
+    utf8_bom?
     info
     audio_metadata
     styles
@@ -7,6 +8,10 @@ grammar ASS
     end_of_data
 
     <Aegisubkit::ASS::Subtitle>
+  end
+
+  rule utf8_bom
+    "\xEF\xBB\xBF"
   end
 
   rule info

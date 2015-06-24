@@ -59,7 +59,7 @@ module Aegisubkit
     def self.import(file_path)
       Treetop.load(File.join(__dir__, 'ass'))
       parser = ASSParser.new
-      string = File.read(file_path, encoding: 'bom|utf-8')
+      string = File.read(file_path)
       syntax_tree = parser.parse(string)
       if syntax_tree
         syntax_tree.build
