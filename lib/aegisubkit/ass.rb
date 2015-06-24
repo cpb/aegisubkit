@@ -1,13 +1,14 @@
 require 'treetop'
+require 'ostruct'
 
 module Aegisubkit
   module ASS
     class Subtitle < Treetop::Runtime::SyntaxNode
       def build
-        subtitle = {}
-        subtitle[:events] = event_section.events.build
-        subtitle[:info] = info.build
-        subtitle[:audio_metadata] = audio_metadata.build
+        subtitle = OpenStruct.new
+        subtitle.events = event_section.events.build
+        subtitle.info = info.build
+        subtitle.audio_metadata = audio_metadata.build
         subtitle
       end
     end

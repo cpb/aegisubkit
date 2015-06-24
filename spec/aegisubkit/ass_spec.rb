@@ -13,29 +13,29 @@ describe Aegisubkit::ASS do
   end
 
   it 'should contains script infos' do
-    expect(@result[:info]).not_to be_nil
-    expect(@result[:info]).to be_kind_of String
+    expect(@result.info).not_to be_nil
+    expect(@result.info).to be_kind_of String
   end
 
   it 'should have events' do
-    expect(@result[:events]).not_to be_nil
-    expect(@result[:events]).to be_kind_of Array
+    expect(@result.events).not_to be_nil
+    expect(@result.events).to be_kind_of Array
   end
 
   it 'events should have correct attrs' do
-    event = @result[:events].first
+    event = @result.events.first
     %w(start end caption id).each do |k|
       expect(event.key?(k.to_sym)).to be_truthy
     end
   end
 
   it 'should parse event correctly' do
-    captions = @result[:events].map { |x| x[:caption] }
+    captions = @result.events.map { |x| x[:caption] }
     expect(captions.include?("The man and women")).to be_truthy
   end
 
   it 'should have audio metadata' do
-    expect(@result[:audio_metadata]).not_to be_nil
-    expect(@result[:audio_metadata]).to be_kind_of Hash
+    expect(@result.audio_metadata).not_to be_nil
+    expect(@result.audio_metadata).to be_kind_of Hash
   end
 end
