@@ -21,7 +21,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    @file_path = File.expand_path('../../fixtures/example.ass', __FILE__)
+    @result = Aegisubkit::ASS.import(@file_path)
+
+    @result.info           # script info
+    @result.events         # events
+    @result.audio_metadata # audio file metadata
+
+see also `lib/aegisubkit/ass.rb`
 
 ## Development
 
