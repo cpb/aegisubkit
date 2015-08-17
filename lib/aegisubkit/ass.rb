@@ -51,7 +51,7 @@ module Aegisubkit
           event[:id] = elements.index(line) + 1
           event[:start] = fields[1]
           event[:end] = fields[2]
-          event[:caption] = fields[9..-1].join.sub!(/\N|\n/, '')
+          event[:caption] = fields[9..-1].join.tr("\n", '')
           event
         end
       end
