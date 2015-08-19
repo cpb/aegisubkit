@@ -31,7 +31,8 @@ describe Aegisubkit::ASS do
 
   it 'should parse event correctly' do
     captions = @result.events.map { |x| x[:caption] }
-    expect(captions.include?("The man and women")).to be_truthy
+    expect(captions.include?('The man and women')).to be_truthy
+    expect(captions.include?('Night is dark, but life is better')).to be_truthy
   end
 
   it 'should have audio metadata' do
