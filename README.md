@@ -2,7 +2,6 @@
 
 A Parser for Aegisub subtitle file in ruby
 
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -28,7 +27,7 @@ Or install it yourself as:
     @result.events         # events
     @result.audio_metadata # audio file metadata
 
-see also `lib/aegisubkit/ass.rb`
+see also [lib/aegisubkit/ass.rb](lib/aegisubkit/ass.rb)
 
 ## Development
 
