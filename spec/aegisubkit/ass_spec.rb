@@ -35,6 +35,13 @@ describe Aegisubkit::ASS do
     expect(captions.include?('Night is dark, but life is better')).to be_truthy
   end
 
+  it 'should keep \n in events' do
+    captions = @result.events.map { |x| x[:caption] }
+    expect(captions.include?('The man and women')).to be_truthy
+    expect(captions.include?('Night is dark, but life is better')).to be_truthy
+    expect(captions.include?("Night is dark, \n but life \n is better")).to be_truthy
+  end
+
   it 'should have audio metadata' do
     expect(@result.audio_metadata).not_to be_nil
     expect(@result.audio_metadata).to be_kind_of Hash

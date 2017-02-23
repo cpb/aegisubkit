@@ -31,11 +31,11 @@ grammar ASS
   end
 
   rule events
-    line* <Aegisubkit::ASS::Events>
+    event* <Aegisubkit::ASS::Events>
   end
 
   rule event
-    'Dialogue'
+    'Dialogue:' string end_of_section
   end
 
   rule lines
